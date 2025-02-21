@@ -1,15 +1,7 @@
 # ORDER MANAGEMENT
 
-A Django REST Framework-based backend service for vehicle procurement, inspection, and management system.
+A Django REST Framework-based backend service for Order management creation , fetch and avg time monitoring between create and update operations with different order status for a scalable system.
 
-## Project Overview
-
-ProcX is a comprehensive vehicle management platform that handles:
-- Vehicle procurement and leads management
-- Multi-level inspection workflows
-- Pricing engine for vehicle valuation
-- Mobile app integration
-- Integration with CRM and ERP systems
 
 ### Technology Stack
 
@@ -17,7 +9,6 @@ ProcX is a comprehensive vehicle management platform that handles:
 - **Database**: PostgreSQL
 - **Caching**: Redis
 - **Task Queue**: Celery
-- **API Documentation**: drf-spectacular (OpenAPI/Swagger)
 
 
 ### System Components
@@ -125,6 +116,36 @@ celery -A order_management worker -l info
 ```
 
 ```
+
+
+## Curl to run 
+
+```
+curl --location 'http://localhost:8000/orders/orders/' \
+--header 'Content-Type: application/json' \
+--data '{
+    "user_id": 123,
+    "order_id": 12345,
+    "item_ids": [1,2,3,4,5],
+    "total_amount": 1200
+}'
+```
+
+```
+curl --location 'http://localhost:8000/orders/orders/' \
+--header 'Content-Type: application/json'
+```
+
+
+```
+curl --location 'http://localhost:8000/orders/metrics/' \
+--header 'Content-Type: application/json'
+```
+
+
+
+
+
 
 ## Testing
 
