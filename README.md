@@ -87,12 +87,21 @@ REDIS_URL=redis://localhost:6379
 ### Docker Setup
 
 
-2. Run Redis container:
+3. Run Redis container:
 ```bash
-docker run --name redis -d -p 6379:6379 redis
+local redis server 
+    redis-server
+docker
+    docker run --name redis -d -p 6379:6379 redis
 ```
 
-3. Build and run the application:
+4. Start Celery worker:
+```bash
+celery -A order_management worker -l info
+```
+
+
+5. Build and run the application:
 ```bash
 docker build -t order_management .
 docker run -p 8000:8000 order_management
@@ -110,10 +119,6 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-3. Start Celery worker:
-```bash
-celery -A order_management worker -l info
-```
 
 ```
 
